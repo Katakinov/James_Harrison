@@ -1,0 +1,7 @@
+{
+    "port": 8000,
+    //секретный ключ
+    "jwtSecret": "koala_aya",
+    //ссылка на БД пароль тут же "qwerty12"
+    "mongoUrl": "mongodb+srv://koala:qwerty12@cluster0.5e57m.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+}
