@@ -1,0 +1,85 @@
+.regPages{
+    display: flex;
+    --donor-color: #FFD3D3;
+    background-color: var(--donor-color);
+    color: #FF0404;
+    flex: 1;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.regContainerForms{
+    display: flex;
+    flex-direction: row;
+    width: 50rem;
+    height: 25rem;
+    margin-top: 20vh;
+    margin-bottom: 20vh;
+    margin-left: 25%;
+    margin-right: 25%;
+    background-color: white;
+    align-items: center;
+}
+
+.regDonorIconAuth{
+    height: 20vh;
+    margin-left: 20%;
+    margin-right: 0;
+}
+
+.regContent{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-right: 5%;
+    margin-left: 5%;
+    justify-content: center;
+}
+
+.regFormTitle{
+    display: flex;
+    justify-content: center;
+    font-size: 28px;
+    margin-bottom: 2%;
+}
+
+.regFormInput{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 2%;
+}
+
+.regFormInput>input{
+    margin-bottom: 5%;
+    font-size: 24px;
+}
+
+.regFormsUnder{
+    display: flex;
+    margin-left: 20%;
+    margin-right: 20%;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 2%;
+}
+
+.regConfirmButton{
+    display: flex;
+    width: 100%;
+    font-size: 100%;
+    background-color: var(--donor-color);
+    text-decoration: none;
+    padding: 2%;
+    justify-content: center;
+}
+
+.regButton{
+    text-decoration: none;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 5%;
+}

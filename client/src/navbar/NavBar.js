@@ -9,6 +9,9 @@ const NavBar = () => {
         <div className="navBarPages">
             <img src="https://gbuzspk.ru/images/news/2021/03/16/pelikan/pelikan_001.jpg" className="donorIcon" alt="symbol"/>
             <div className="navBarButtons">
+                <NavLink to="/main" className="buttonClass">
+                    <h1>Главная</h1>
+                </NavLink>
                 <NavLink to="/profile" className="buttonClass">
                     <h1>Личный кабинет</h1>
                 </NavLink>
