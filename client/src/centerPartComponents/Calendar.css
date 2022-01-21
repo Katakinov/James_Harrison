@@ -2,3 +2,9 @@
     flex: 0.8;
     background-color: red;
 }
+
+.donCalendar{
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
