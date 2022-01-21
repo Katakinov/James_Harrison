@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./NavBar.css";
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate } from "react-router-dom";
 import PetsIcon from '@material-ui/icons/Pets';
+import { AuthContext } from "../context/AuthContext";
 //import {Avatar, Button} from "@material-ui/core";
 
 const NavBar = () => {
+    const history = useNavigate()
+    const auth = useContext(AuthContext)
+
+    const logoutHandler = event => {
+        event.preventDefault()
+        auth.logout()
+        history.push('/')
+    }
+
     return (
         <div className="navBarPages">
             <img src="https://gbuzspk.ru/images/news/2021/03/16/pelikan/pelikan_001.jpg" className="donorIcon" alt="symbol"/>
@@ -24,9 +34,9 @@ const NavBar = () => {
                 <NavLink to="/aboutdonation" className="buttonClass">
                     <h1>О донорстве</h1>
                 </NavLink>
-                <NavLink to="/login" className="iconButtonClass">
+                <a href="/" onClick={logoutHandler} className="iconButtonClass">
                     <PetsIcon/>
-                </NavLink>
+                </a>
             </div>
         </div>
     )

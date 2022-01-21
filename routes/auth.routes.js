@@ -7,37 +7,38 @@ const User = require('../models/User')
 
 const router = Router()
 
-// /api/auth/register
+// /api/register
 router.post(
     '/register',
     //валиадация
     [
-        check('email', 'Неккорректный email').isEmail(),
-        check('password', 'Минимальная длина пароля 6 символов').isLength({min: 6})
+        check('email', 'Некорректный email').isEmail(),
+        check('password', 'Минимальная длина пароля 6 символов').isLength({ min: 6 })
     ],
     async (req, res) => {
     try {
         //отлов ошибок валиадации
         const errors = validationResult(req)
-        if(!errors.isEmpty()){
+        if(!errors.isEmpty()) {
             return res.status(400).json({
                 errors: errors.array(),
-                message: 'Неккорректные данные при регистрации'
+                message: 'Некорректные данные при регистрации'
             })
         }
 
         //получение данных с фронта
-        const {email, password, birthday} = req.body 
+        const {email, password} = req.body 
 
         //проверка не существования пользователя с таким же эмейлом
         const candidate = await User.findOne({ email })
+
         if (candidate){
             return res.status(400).json({ message: "Такой пользователь уже существует"})
         }
 
         //хэширование пароля
         const hashedPassword = await bcrypt.hash(password, 12)
-        const user = new User({ email, password: hashedPassword, birthday })
+        const user = new User({ email, password: hashedPassword })
 
         //сохранение пользователя
         await user.save()
@@ -51,7 +52,7 @@ router.post(
 
 
 
-// /api/auth/login
+// /api/login
 router.post(
     '/login',
     //условия валидности
@@ -63,10 +64,11 @@ router.post(
     try {
         //отлов ошибок валидации
         const errors = validationResult(req)
+
         if(!errors.isEmpty()){
             return res.status(400).json({
                 errors: errors.array(),
-                message: 'Неккорректные данные при входе в систему'
+                message: 'Некорректные данные при входе в систему'
             })
         }
 
@@ -75,6 +77,7 @@ router.post(
 
         //поиск зарегистрированного пользователя по эмейлу в базе
         const user = await User.findOne({ email })
+
         if (!user){
             return res.status(400).json({ message: 'Пользователь не найден'})
         }
@@ -95,16 +98,12 @@ router.post(
         )
 
         //при успешном входе передача данных
-        res.json({ token, userId })
+        res.json({ token, userId: user.id })
 
     //отлов ошибок вообще вообще
     } catch (e) {
-        res.status(400).json({message: "Что то пошло не так, попробуйте снова"})
+        res.status(500).json({message: "Что то пошло не так, попробуйте снова"})
     }
-})
-
-router.get('/auth', (req, res) => {
-    res.send("hi!!!");
 })
 
 module.exports = router
