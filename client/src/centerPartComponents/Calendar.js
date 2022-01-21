@@ -1,7 +1,7 @@
 import React from "react";
 import { DataGrid } from '@mui/x-data-grid';
 import "./Calendar.css"
-import { Button, Checkbox } from "@mui/material";
+import { Button } from "@mui/material";
 
 const Calendar = () => {
     return(
