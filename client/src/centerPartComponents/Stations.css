@@ -1,4 +1,24 @@
 .stations{
     flex: 0.8;
-    background-color: red;
+    background-color: white;
+    width: 100vw;
+    height: 100vh;
+}
+
+.containerListAndMap{
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.stationsList{
+    background-color: green;
+    flex: 0.2;
+    height: fit-content;
+}
+
+.map{
+    flex: 0.8;
+    align-content: center;
+    margin: 15%, 15%, 15%, 15%;
 }
